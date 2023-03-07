@@ -30,8 +30,4 @@ def signin(request):
         else:
             login(request, user)
             return redirect('home')
-
-
-def home(request):
-    return render(request,'users/home.html')
 # Create your views here.
