@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import IntegrityError
 
+
 def signup(request):
     if request.method=='GET':
         return render(request,'users/signup.html',{'form':UserCreationForm()})
