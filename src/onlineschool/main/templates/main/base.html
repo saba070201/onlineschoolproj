@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,21 @@
 </head>
 <body>
 <header>
-    <a href="{% url 'home' %}"> ссылка </a>
+    {% if user.is_authenticated  %}
+    <a href="{% url 'home' %}"> домой </a>
+    <form method="POST" action="{% url 'users:signout' %}">
+        {% csrf_token %}
+        <button  type="submit" >Выйти</button>
+    </form>
+    вы зарегестрированы как {{ user.username }}
+    {% else %}
+    <a  href="{% url 'users:signup' %}"> зарегестрироваться </a>
+    <a  href="{% url 'users:signin' %}"> войти </a>
+    {% endif %}
 </header>
+<br>
+<br>
+<br>
+{% block content %}{% endblock %}
 </body>
 </html>
