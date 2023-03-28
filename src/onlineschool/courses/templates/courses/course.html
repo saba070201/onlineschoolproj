@@ -1,0 +1,11 @@
+{{ course.title }}
+<br>
+{{ course.memo }}
+<br>
+{% for module in modules %}
+<a href="{% url 'courses:watchlesson' course.id module.id %}"> ссылка </a>
+
+<br>
+{{ module.memo }}
+<br>
+{% endfor %}
